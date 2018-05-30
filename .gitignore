@@ -1,0 +1,5 @@
+logfile
+core/__pycache__/
+core/migrations/__pycache__/
+stravasearch/__pycache__/
+stravasearch/settings/__pycache__/

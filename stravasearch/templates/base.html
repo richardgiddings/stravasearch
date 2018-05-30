@@ -1,0 +1,30 @@
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+  <title>Strava activities for athlete</title>
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <script src="https://use.fontawesome.com/73fb701cc7.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <header>
+      {% if user.is_authenticated %}
+        <h3 class="text-center mt-3">
+          You are signed in as <strong>{{ user.username }}</strong> /
+          <a href="{% url 'logout' %}">logout</a>
+        </h3>
+      {% endif %}
+    </header>
+    <main>
+      {% for message in messages %}
+        <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% endif %}">
+          {{ message }}
+        </p>
+      {% endfor %}
+      {% block content %}
+      {% endblock %}
+    </main>
+  </div>
+</body>
+</html>

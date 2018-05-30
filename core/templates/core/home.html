@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="pagination justify-content-center mt-3">
+    {% if activities.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ activities.previous_page_number }}"><i class="fa fa-angle-left"></i></a></li>
+    {% endif %}
+    {% for page_num in activities.paginator.page_range %}
+    <li {% if page_num == activities.number %}class="active page-item"{% endif %}><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+    {% endfor %}
+    {% if activities.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ activities.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
+    {% endif%}
+</ul>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Athletes</th>
+        </tr>
+    </thead>
+{% for activity in activities %}
+    <tr>
+        <td><a href="{{ activity.link }}">{{ activity.name }}</a></td>
+        <td>{{ activity.date }}</td>
+        <td>{{ activity.athlete_count }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
