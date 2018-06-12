@@ -62,7 +62,6 @@ def home(request):
                     "type": activity.type,
                     "link": "https://www.strava.com/activities/{}".format(activity.id),
                     "date": activity.start_date_local,
-                    "athlete_count": activity.athlete_count,
                 }
             )
 
