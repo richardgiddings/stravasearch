@@ -13,6 +13,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from datetime import datetime
 
+from units import scaled_unit
+
 @login_required
 def home(request):
 
@@ -44,6 +46,8 @@ def home(request):
         else: # to_date
             query = client.get_activities(before=to_datetime)
 
+        km = scaled_unit('km', 'm', 1000) # define a new unit
+
         for activity in query:
             if from_date and not to_date:
                 index = 0
@@ -54,6 +58,8 @@ def home(request):
                 { 
                     "id": activity.id,
                     "name": activity.name,
+                    "distance": km(activity.distance),
+                    "type": activity.type,
                     "link": "https://www.strava.com/activities/{}".format(activity.id),
                     "date": activity.start_date_local,
                     "athlete_count": activity.athlete_count,

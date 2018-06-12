@@ -40,14 +40,18 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
+            <th>Type</th>
             <th>Name</th>
+            <th>Distance</th>
             <th>Date</th>
             <th>Athletes</th>
         </tr>
     </thead>
 {% for activity in activities %}
     <tr>
+        <td>{{ activity.type }}</td>
         <td><a href="{{ activity.link }}">{{ activity.name }}</a></td>
+        <td>{{ activity.distance }}</td>
         <td>{{ activity.date }}</td>
         <td>{{ activity.athlete_count }}</td>
     </tr>
