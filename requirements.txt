@@ -20,5 +20,5 @@ social-auth-app-django==2.1.0
 social-auth-core==1.7.0
 stravalib==0.9.2
 units==0.7
-urllib3==1.22
+urllib3==1.26.5
 whitenoise==3.3.1
